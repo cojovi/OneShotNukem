@@ -3,8 +3,8 @@
  * Initializes the game engine and manages the game lifecycle
  */
 
-import { Engine } from '../../src/engine/core/Engine.js';
-import { Game as RanchGame } from '../../src/game/Game.js';
+import { Engine } from './engine/core/Engine.js';
+import { Game } from './game/Game.js';
 import { GameStateManager } from './GameStateManager.js';
 import { MinimapRenderer } from './MinimapRenderer.js';
 
@@ -16,6 +16,7 @@ class Game {
         this.loadingProgress = 0;
         this.gameStateManager = null;
         this.minimapRenderer = null;
+        this.ranchGame = null;
         
         // UI elements
         this.ui = {
@@ -174,7 +175,7 @@ class Game {
     
     async createGameWorld() {
         // Initialize the comprehensive ranch world system
-        this.ranchGame = new RanchGame(this.engine);
+        this.ranchGame = new Game(this.engine);
         const success = await this.ranchGame.initialize();
         
         if (!success) {

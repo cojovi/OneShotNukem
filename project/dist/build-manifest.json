@@ -1,0 +1,206 @@
+{
+  "name": "OneShot Predator Nukem",
+  "version": "1.0.0",
+  "buildDate": "2025-06-21T06:56:17.540Z",
+  "buildNumber": 1750488977552,
+  "files": [
+    {
+      "path": "DEPLOYMENT.md",
+      "size": 2751,
+      "modified": "2025-06-21T06:56:17.537Z"
+    },
+    {
+      "path": "assets/asset_inventory.json",
+      "size": 1763,
+      "modified": "2025-06-21T06:56:17.521Z"
+    },
+    {
+      "path": "assets/audio/banjo_melody.wav",
+      "size": 235968,
+      "modified": "2025-06-21T06:56:17.521Z"
+    },
+    {
+      "path": "assets/audio/boar_grunt.wav",
+      "size": 35324,
+      "modified": "2025-06-21T06:56:17.521Z"
+    },
+    {
+      "path": "assets/audio/footstep.wav",
+      "size": 8864,
+      "modified": "2025-06-21T06:56:17.521Z"
+    },
+    {
+      "path": "assets/audio/gunshot.wav",
+      "size": 13274,
+      "modified": "2025-06-21T06:56:17.521Z"
+    },
+    {
+      "path": "assets/audio/western_background.wav",
+      "size": 352844,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/color_palette.json",
+      "size": 8599,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/oneshot.png",
+      "size": 2389,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/oneshot_small.png",
+      "size": 964,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/sprites/boar_charge_variant1.png",
+      "size": 1660,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/sprites/boar_charge_variant2.png",
+      "size": 1378,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/sprites/boar_death_variant1.png",
+      "size": 1612,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/sprites/boar_death_variant2.png",
+      "size": 1449,
+      "modified": "2025-06-21T06:56:17.525Z"
+    },
+    {
+      "path": "assets/sprites/boar_patrol_variant1.png",
+      "size": 1661,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "assets/sprites/boar_patrol_variant2.png",
+      "size": 1505,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "assets/textures/barn_wood.png",
+      "size": 7657,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "assets/textures/cedar_fence.png",
+      "size": 5165,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "assets/textures/pine_fence.png",
+      "size": 4452,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "assets/textures/ranch_grass.png",
+      "size": 3095,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "assets/textures/ranch_ground.png",
+      "size": 11230,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "assets/textures/ranch_stone.png",
+      "size": 15937,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "config.json",
+      "size": 1048,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "css/style.css",
+      "size": 16795,
+      "modified": "2025-06-21T06:56:17.529Z"
+    },
+    {
+      "path": "index.html",
+      "size": 8290,
+      "modified": "2025-06-21T06:56:17.537Z"
+    },
+    {
+      "path": "js/AssetPreloader.js",
+      "size": 2049,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "js/GameStateManager.js",
+      "size": 21569,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "js/MinimapRenderer.js",
+      "size": 4697,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "js/PerformanceMonitor.js",
+      "size": 2418,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "js/main.js",
+      "size": 19376,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "shaders/basic.frag",
+      "size": 739,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "shaders/basic.vert",
+      "size": 515,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "shaders/skybox.frag",
+      "size": 350,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "shaders/skybox.vert",
+      "size": 366,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "shaders/sprite.frag",
+      "size": 487,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "shaders/sprite.vert",
+      "size": 595,
+      "modified": "2025-06-21T06:56:17.533Z"
+    },
+    {
+      "path": "test.html",
+      "size": 8932,
+      "modified": "2025-06-21T06:56:17.533Z"
+    }
+  ],
+  "performance": {
+    "targetFPS": 60,
+    "optimized": true
+  },
+  "deployment": {
+    "ready": true,
+    "errors": [],
+    "warnings": [
+      "js/main.js has imports but no exports",
+      "js/main.js contains console.log statements",
+      "js/GameStateManager.js contains console.log statements"
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneShot Predator Nukem - Retro FPS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/oneshot_small.png">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="1280" height="720"></canvas>
+        
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="overlay">
+            <div class="loading-content">
+                <img src="assets/oneshot.png" alt="OneShot Predator Nukem" class="logo">
+                <div class="loading-bar">
+                    <div id="loadingProgress" class="loading-fill"></div>
+                </div>
+                <p id="loadingText">Loading game assets...</p>
+            </div>
+        </div>
+        
+        <!-- Main Menu -->
+        <div id="mainMenu" class="overlay hidden">
+            <div class="menu-content">
+                <img src="assets/oneshot.png" alt="OneShot Predator Nukem" class="logo">
+                <div class="menu-buttons">
+                    <button id="startGame" class="menu-button">Start Game</button>
+                    <button id="showControls" class="menu-button">Controls</button>
+                    <button id="showSettings" class="menu-button">Settings</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controls Screen -->
+        <div id="controlsScreen" class="overlay hidden">
+            <div class="menu-content">
+                <h2>Controls</h2>
+                <div class="controls-grid">
+                    <div class="control-item">
+                        <span class="key">W A S D</span>
+                        <span class="action">Move</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Mouse</span>
+                        <span class="action">Look Around</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Left Click</span>
+                        <span class="action">Shoot</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Right Click</span>
+                        <span class="action">Aim</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Space</span>
+                        <span class="action">Jump</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Shift</span>
+                        <span class="action">Sprint</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">R</span>
+                        <span class="action">Reload</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Escape</span>
+                        <span class="action">Menu</span>
+                    </div>
+                </div>
+                <button id="backFromControls" class="menu-button">Back</button>
+            </div>
+        </div>
+        
+        <!-- Settings Screen -->
+        <div id="settingsScreen" class="overlay hidden">
+            <div class="menu-content">
+                <h2>Settings</h2>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label for="masterVolume">Master Volume</label>
+                        <input type="range" id="masterVolume" min="0" max="100" value="100">
+                        <span id="masterVolumeValue">100%</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="musicVolume">Music Volume</label>
+                        <input type="range" id="musicVolume" min="0" max="100" value="70">
+                        <span id="musicVolumeValue">70%</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="sfxVolume">SFX Volume</label>
+                        <input type="range" id="sfxVolume" min="0" max="100" value="80">
+                        <span id="sfxVolumeValue">80%</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="mouseSensitivity">Mouse Sensitivity</label>
+                        <input type="range" id="mouseSensitivity" min="0.1" max="3.0" step="0.1" value="1.0">
+                        <span id="mouseSensitivityValue">1.0</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="invertY">Invert Y-Axis</label>
+                        <input type="checkbox" id="invertY">
+                    </div>
+                </div>
+                <button id="backFromSettings" class="menu-button">Back</button>
+            </div>
+        </div>
+        
+        <!-- Pause Menu -->
+        <div id="pauseMenu" class="overlay hidden">
+            <div class="menu-content">
+                <h2>Paused</h2>
+                <div class="menu-buttons">
+                    <button id="resumeGame" class="menu-button">Resume</button>
+                    <button id="pauseSettings" class="menu-button">Settings</button>
+                    <button id="quitToMenu" class="menu-button">Main Menu</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game HUD -->
+        <div id="gameHUD" class="hidden">
+            <div class="hud-top">
+                <div class="health-bar">
+                    <div class="bar-label">Health</div>
+                    <div class="bar-container">
+                        <div id="healthBar" class="bar-fill health"></div>
+                    </div>
+                    <div id="healthText" class="bar-text">100</div>
+                </div>
+                <div class="score">
+                    <div class="score-label">Score</div>
+                    <div id="scoreValue" class="score-value">0</div>
+                </div>
+            </div>
+            
+            <div class="hud-bottom">
+                <div class="ammo-display">
+                    <div id="ammoCount" class="ammo-count">30</div>
+                    <div class="ammo-separator">/</div>
+                    <div id="ammoReserve" class="ammo-reserve">120</div>
+                </div>
+                <div class="weapon-name">
+                    <div id="weaponName">Shotgun</div>
+                </div>
+            </div>
+            
+            <div class="crosshair">
+                <div class="crosshair-dot"></div>
+            </div>
+        </div>
+        
+        <!-- Click to Start Overlay -->
+        <div id="clickToStart" class="overlay hidden">
+            <div class="click-content">
+                <h2>Click to Start</h2>
+                <p>Click anywhere to enable mouse controls</p>
+            </div>
+        </div>
+        
+        <!-- Performance Stats -->
+        <div id="performanceStats" class="hidden">
+            <div class="stat-line">FPS: <span id="fpsCounter">60</span></div>
+            <div class="stat-line">Draw Calls: <span id="drawCalls">0</span></div>
+            <div class="stat-line">Triangles: <span id="triangles">0</span></div>
+        </div>
+    </div>
+    
+    <!-- Error Display -->
+    <div id="errorDisplay" class="hidden">
+        <div class="error-content">
+            <h2>Error</h2>
+            <p id="errorMessage">An error occurred while loading the game.</p>
+            <button id="reloadButton" class="menu-button">Reload</button>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

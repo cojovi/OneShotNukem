@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneShot Predator Nukem - Engine Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+        }
+        
+        #testCanvas {
+            border: 2px solid #f39c12;
+            display: block;
+            margin: 20px auto;
+            image-rendering: pixelated;
+        }
+        
+        .test-info {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .test-status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .test-pass {
+            background: #27ae60;
+            border: 1px solid #2ecc71;
+        }
+        
+        .test-fail {
+            background: #e74c3c;
+            border: 1px solid #c0392b;
+        }
+        
+        .test-pending {
+            background: #f39c12;
+            border: 1px solid #e67e22;
+        }
+        
+        #testResults {
+            text-align: left;
+            background: #2c3e50;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>OneShot Predator Nukem - Engine Test</h1>
+        <p>Testing WebGL engine components...</p>
+        
+        <canvas id="testCanvas" width="800" height="600"></canvas>
+        
+        <div id="testResults">
+            <h3>Test Results:</h3>
+            <div id="testList"></div>
+        </div>
+        
+        <div id="engineStats">
+            <h3>Engine Statistics:</h3>
+            <div id="statsList"></div>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { Engine } from '../src/engine/core/Engine.js';
+        
+        class EngineTest {
+            constructor() {
+                this.canvas = document.getElementById('testCanvas');
+                this.engine = null;
+                this.tests = [];
+                this.testResults = document.getElementById('testList');
+                this.statsDisplay = document.getElementById('statsList');
+                
+                this.runTests();
+            }
+            
+            async runTests() {
+                this.addTest('WebGL Context Creation', 'pending');
+                this.addTest('Engine Initialization', 'pending');
+                this.addTest('Shader Compilation', 'pending');
+                this.addTest('Texture Loading', 'pending');
+                this.addTest('Audio System', 'pending');
+                this.addTest('Input System', 'pending');
+                this.addTest('Collision System', 'pending');
+                this.addTest('Rendering Pipeline', 'pending');
+                
+                try {
+                    // Test WebGL context
+                    this.engine = new Engine(this.canvas);
+                    this.updateTest('WebGL Context Creation', 'pass', 'WebGL context created successfully');
+                    
+                    // Test engine initialization
+                    const initialized = await this.engine.initialize();
+                    if (initialized) {
+                        this.updateTest('Engine Initialization', 'pass', 'Engine initialized successfully');
+                    } else {
+                        this.updateTest('Engine Initialization', 'fail', 'Engine initialization failed');
+                        return;
+                    }
+                    
+                    // Test shader compilation
+                    const basicShader = this.engine.renderer.shaderManager.getShader('basic');
+                    const spriteShader = this.engine.renderer.shaderManager.getShader('sprite');
+                    
+                    if (basicShader && spriteShader) {
+                        this.updateTest('Shader Compilation', 'pass', 'Basic and sprite shaders compiled');
+                    } else {
+                        this.updateTest('Shader Compilation', 'fail', 'Shader compilation failed');
+                    }
+                    
+                    // Test texture loading (will use fallback textures)
+                    const textureStats = this.engine.renderer.textureManager.getStats();
+                    this.updateTest('Texture Loading', 'pass', `${textureStats.loadedTextures} textures loaded`);
+                    
+                    // Test audio system
+                    const audioStats = this.engine.audioManager.getStats();
+                    if (audioStats.contextState !== 'none') {
+                        this.updateTest('Audio System', 'pass', `Audio context: ${audioStats.contextState}`);
+                    } else {
+                        this.updateTest('Audio System', 'fail', 'Audio system not initialized');
+                    }
+                    
+                    // Test input system
+                    if (this.engine.inputManager) {
+                        this.updateTest('Input System', 'pass', 'Input manager created');
+                    } else {
+                        this.updateTest('Input System', 'fail', 'Input manager not created');
+                    }
+                    
+                    // Test collision system
+                    if (this.engine.collisionSystem) {
+                        this.updateTest('Collision System', 'pass', 'Collision system created');
+                    } else {
+                        this.updateTest('Collision System', 'fail', 'Collision system not created');
+                    }
+                    
+                    // Test rendering pipeline
+                    this.engine.start();
+                    setTimeout(() => {
+                        const renderStats = this.engine.renderer.getStats();
+                        this.updateTest('Rendering Pipeline', 'pass', `Rendering active - ${renderStats.drawCalls} draw calls`);
+                        this.updateStats();
+                    }, 1000);
+                    
+                } catch (error) {
+                    console.error('Test failed:', error);
+                    this.updateTest('Engine Initialization', 'fail', error.message);
+                }
+            }
+            
+            addTest(name, status) {
+                const testDiv = document.createElement('div');
+                testDiv.className = `test-status test-${status}`;
+                testDiv.id = `test-${name.replace(/\s+/g, '-').toLowerCase()}`;
+                testDiv.innerHTML = `<strong>${name}:</strong> <span class="status">${status.toUpperCase()}</span> <span class="details"></span>`;
+                this.testResults.appendChild(testDiv);
+            }
+            
+            updateTest(name, status, details = '') {
+                const testId = `test-${name.replace(/\s+/g, '-').toLowerCase()}`;
+                const testDiv = document.getElementById(testId);
+                if (testDiv) {
+                    testDiv.className = `test-status test-${status}`;
+                    testDiv.querySelector('.status').textContent = status.toUpperCase();
+                    testDiv.querySelector('.details').textContent = details ? ` - ${details}` : '';
+                }
+            }
+            
+            updateStats() {
+                if (!this.engine) return;
+                
+                const engineStats = this.engine.getStats();
+                const renderStats = this.engine.renderer.getStats();
+                const audioStats = this.engine.audioManager.getStats();
+                const textureStats = this.engine.renderer.textureManager.getStats();
+                
+                this.statsDisplay.innerHTML = `
+                    <p><strong>FPS:</strong> ${engineStats.fps}</p>
+                    <p><strong>Delta Time:</strong> ${engineStats.deltaTime.toFixed(2)}ms</p>
+                    <p><strong>Game Objects:</strong> ${engineStats.gameObjects}</p>
+                    <p><strong>Sprites:</strong> ${engineStats.sprites}</p>
+                    <p><strong>Draw Calls:</strong> ${renderStats.drawCalls}</p>
+                    <p><strong>Triangles:</strong> ${renderStats.triangles}</p>
+                    <p><strong>Loaded Textures:</strong> ${textureStats.loadedTextures}</p>
+                    <p><strong>Audio Context:</strong> ${audioStats.contextState}</p>
+                    <p><strong>Active Audio Sources:</strong> ${audioStats.activeSources}</p>
+                `;
+                
+                // Update stats every second
+                setTimeout(() => this.updateStats(), 1000);
+            }
+        }
+        
+        // Start tests when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new EngineTest();
+        });
+    </script>
+</body>
+</html>

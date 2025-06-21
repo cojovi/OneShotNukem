@@ -1,0 +1,61 @@
+{
+  "sprites": {
+    "wild_boars": {
+      "files": [
+        "boar_patrol_variant1.png",
+        "boar_patrol_variant2.png",
+        "boar_charge_variant1.png",
+        "boar_charge_variant2.png",
+        "boar_death_variant1.png",
+        "boar_death_variant2.png"
+      ],
+      "description": "Wild boar sprites with 3 states (patrol, charge, death) and 2 variants each",
+      "size": "64x64 pixels",
+      "format": "PNG with 256-color palette"
+    }
+  },
+  "textures": {
+    "ranch_environment": {
+      "files": [
+        "cedar_fence.png",
+        "pine_fence.png",
+        "barn_wood.png",
+        "ranch_ground.png",
+        "ranch_grass.png",
+        "ranch_stone.png"
+      ],
+      "description": "Texas ranch environment textures based on authentic materials",
+      "size": "128x128 pixels",
+      "format": "PNG with 256-color palette"
+    }
+  },
+  "audio": {
+    "music_and_effects": {
+      "files": [
+        "western_background.wav",
+        "banjo_melody.wav",
+        "gunshot.wav",
+        "boar_grunt.wav",
+        "footstep.wav"
+      ],
+      "description": "Retro western-style music and sound effects",
+      "format": "WAV, 22050 Hz, 16-bit mono",
+      "style": "MIDI-inspired with guitar/banjo instrumentation"
+    }
+  },
+  "logos": {
+    "game_branding": {
+      "files": [
+        "oneshot.png",
+        "oneshot_small.png"
+      ],
+      "description": "OneShot Predator Nukem logo based on original OneShot visual style",
+      "format": "PNG with 256-color palette"
+    }
+  },
+  "technical_specs": {
+    "color_palette": "256-color retro palette saved in color_palette.json",
+    "asset_compatibility": "WebGL-ready, billboard-compatible sprites",
+    "licensing": "All assets are generator-created for royalty-free use"
+  }
+}

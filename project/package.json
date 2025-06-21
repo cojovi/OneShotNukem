@@ -1,0 +1,45 @@
+{
+  "name": "oneshot-predator-nukem",
+  "version": "1.0.0",
+  "description": "A retro 2.5D first-person shooter game set in a Texas ranch, where players must eliminate wild hogs that have invaded the property.",
+  "type": "module",
+  "main": "final/index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "start": "npm run dev",
+    "test": "node test_integration.js",
+    "optimize": "node optimize_performance.js",
+    "build": "node build.js",
+    "deploy": "npm run build && npm run test"
+  },
+  "keywords": [
+    "game",
+    "fps",
+    "webgl",
+    "retro",
+    "2.5d",
+    "browser-game",
+    "javascript"
+  ],
+  "author": "OneShot Predator Nukem Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/oneshot-predator-nukem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/oneshot-predator-nukem/issues"
+  },
+  "homepage": "https://github.com/your-username/oneshot-predator-nukem#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "browserslist": [
+    "Chrome >= 80",
+    "Firefox >= 75",
+    "Safari >= 13",
+    "Edge >= 80"
+  ]
+}
